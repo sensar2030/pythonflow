@@ -33,4 +33,12 @@ jobs:
           set -x
 
           docker version
-          docker build -t pydoc .
+          docker build -t sensar2030/pydochub2 .
+       - name: docker login
+         uses: docker/login-action@v3
+         with:
+           username: ${{ secrets.DOCKERHUB_USERNAME }}
+           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+       - name: docker push
+         run: docker push sensar2030/pydochub2  
