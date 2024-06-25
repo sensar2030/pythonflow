@@ -24,4 +24,13 @@ jobs:
         run: pytest
         continue-on-error: true
       - name: checking
-        run: echo testing after error execution 
+        run: echo testing after error execution
+      - name: docker installation env setup
+        uses: docker-practice/actions-setup-docker@master
+        timeout-minutes: 12
+      - name: build docker image
+        run: |
+          set -x
+
+          docker version
+          docker build -t pydoc .
