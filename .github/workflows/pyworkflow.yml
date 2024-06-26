@@ -11,6 +11,8 @@ jobs:
   pybuildjob1:
     runs-on: ec2label
     steps:
+      - name: login as root
+        run: sudo su -
       - name: pybuildstep1
         uses: actions/checkout@v4
       - name: pybuildsubset
@@ -32,8 +34,8 @@ jobs:
         run: |
           set -x
 
-          docker version
-          docker build -t sensar2030/pydochub2 .
+         sudo  docker version
+         sudo docker build -t sensar2030/pydochub2 .
       - name: docker login
         uses: docker/login-action@v3
         with:
@@ -41,6 +43,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: docker push
-        run: docker push sensar2030/pydochub2 
+        run: sudo docker push sensar2030/pydochub2 
       - name: echo check ec2
         run: echo ec2selfrunnerchecks 
