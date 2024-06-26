@@ -9,7 +9,12 @@ on:
 
 jobs:
   pybuildjob1:
-    runs-on: ec2label
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, ec2label, mac-latest]
+        python-verion: ['3.8', '3.9', '3.10']
+
+    runs-on: ${{ matrix.os }}
     steps:
       - name: login as root
         run: sudo su -
@@ -18,7 +23,7 @@ jobs:
       - name: pybuildsubset
         uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: ${{matrix.python-version}}
           cache: 'pip' # caching pip dependencies
       - name: pybuildinstaldepend
         run: pip install -r requirements.txt
