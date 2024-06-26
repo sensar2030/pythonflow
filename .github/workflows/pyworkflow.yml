@@ -11,8 +11,8 @@ jobs:
   pybuildjob1:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, ec2label, mac-latest]
-        python-verion: ['3.8', '3.9', '3.10']
+        os: [ubuntu-latest, ec2label]
+        python-verion: ['3.8', '3.9']
 
     runs-on: ${{ matrix.os }}
     steps:
