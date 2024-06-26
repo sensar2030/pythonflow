@@ -33,9 +33,8 @@ jobs:
       - name: build docker image
         run: |
           set -x
-
-         sudo  docker version
-         sudo docker build -t sensar2030/pydochub2 .
+          sudo  docker version
+          sudo docker build -t sensar2030/pydochub2 .
       - name: docker login
         uses: docker/login-action@v3
         with:
