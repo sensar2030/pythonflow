@@ -33,8 +33,8 @@ jobs:
       - name: build docker image
         run: |
           set -x
-          sudo  docker version
-          sudo docker build -t sensar2030/pydochub2 .
+          docker version
+          docker build -t sensar2030/pydochub2 .
       - name: docker login
         uses: docker/login-action@v3
         with:
@@ -42,6 +42,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: docker push
-        run: sudo docker push sensar2030/pydochub2 
+        run:  docker push sensar2030/pydochub2 
       - name: echo check ec2
         run: echo ec2selfrunnerchecks 
