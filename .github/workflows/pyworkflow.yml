@@ -9,7 +9,7 @@ on:
 
 jobs:
   pybuildjob1:
-    runs-on: ec2runner
+    runs-on: ec2label
     steps:
       - name: pybuildstep1
         uses: actions/checkout@v4
